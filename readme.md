@@ -21,6 +21,8 @@ The Store API project aims to simplify the management of product information for
 
 -   Retrieve product information including name, picture, and price.
 -   Sort products based on different criteria.
+-   Filter products based on various attributes.
+-   Paginate through product listings.
 -   Support for products from various companies, with a focus on IKEA.
 
 ## Installation
@@ -37,25 +39,42 @@ The Store API project aims to simplify the management of product information for
 2. Access product information by making appropriate API calls to the provided endpoints.
 3. Implement sorting logic based on your application's requirements.
 
-## Endpoints (todo)
+## Endpoints
 
--   `GET /products`: Retrieve a list of products.
--   `GET /products/:id`: Retrieve details of a specific product.
--   `POST /products`: Add a new product (authentication/authorization required).
--   `PUT /products/:id`: Update product details (authentication/authorization required).
--   `DELETE /products/:id`: Delete a product (authentication/authorization required).
+-   `GET /api/v1/products`: Retrieve a list of products.
 
-## Sorting (to do)
+## Sorting
 
 The API supports sorting of products based on different criteria:
 
--   `GET /products?sort=price`: Get products sorted by price in ascending order.
--   `GET /products?sort=name`: Get products sorted alphabetically by name.
--   `GET /products?sort=company`: Get products sorted by the company (e.g., IKEA).
+-   (e.g.)`GET /api/v1/products?sort=price`: Get products sorted by price in ascending order.
+-   (e.g.)`GET /api/v1/products?sort=-name,price`: You can add more sort here get products sorted Descending order alphabetically by name and price.
+
+## Filtering
+
+You can filter products based on different attributes:
+
+- `GET /api/v1/products?company=ikea`: Get products filtered by company name.
+- `GET /api/v1/products?name=table`: Get products filtered by names containing "table".
+- `GET /api/v1/products?feature=false`: Get products filtered by feature availability.
+- `GET /api/v1/products?numericFilter=price<30`: Get products filtered by price less than 30 (<,>,<=,>=,=).
+- `GET /api/v1/products?numericFilter=rating>=3.5`: Get products filtered by rating greater than or equal to 3.5 .
+
+## Pagination
+
+You can use pagination to control the number of products displayed:
+
+-   `GET /api/v1/products?limit=10&page=2`: Get 10 products on the second page.
 
 ## Contributing
 
 Contributions to the Store API project are welcome! Feel free to create pull requests for issues or enhancements. Please ensure code follows the existing style and provides adequate documentation.
+
+## to do
+
+-   migration
+-   refactor
+-   better naming
 
 ## License
 
